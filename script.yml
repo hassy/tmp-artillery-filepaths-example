@@ -1,0 +1,15 @@
+config:
+  target: "https://artillery.io"
+  phases:
+    - arrivalCount: 1
+      duration: 1
+  plugins:
+    http-file-uploads:
+      filePaths:
+        - "./data/files"
+  processor: "./processor.js"
+scenarios:
+  - flow:
+      - get:
+          url: "/"
+          beforeRequest: "statFiles"
